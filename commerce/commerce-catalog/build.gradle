@@ -10,7 +10,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     implementation libs.querydsl.jpa
-    annotationProcessor libs.querydsl.apt
+    annotationProcessor "${libs.querydsl.apt.get()}:jakarta"
 
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
