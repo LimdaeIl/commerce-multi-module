@@ -1,3 +1,11 @@
-dependencies {
+plugins {
+    id 'java-library'
+}
 
+dependencies {
+    // 공용 유틸/DTO 등만 — 부트 스타터 금지
+    // 예) api 'org.apache.commons:commons-lang3:3.14.0'
+    // MapStruct 쓰면(commons에 DTO 매핑):
+    // implementation libs.mapstruct
+    // annotationProcessor libs.mapstruct.processor
 }
