@@ -1,0 +1,6 @@
+rootProject.name = 'commerce'
+include 'commerce-catalog'
+include 'commerce-commons'
+include 'commerce-order'
+include 'commerce-payment'
+include 'commerce-user'
