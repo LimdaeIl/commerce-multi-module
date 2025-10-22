@@ -1,0 +1,34 @@
+[versions]
+java = "21"
+spring-boot = "3.5.6"
+depman = "1.1.7"
+lombok = "1.18.34"
+mapstruct = "1.6.2"
+jjwt = "0.12.6"
+querydsl = "5.1.0"
+redisson = "3.52.0"
+
+junit = "5.11.4"
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+depman = { id = "io.spring.dependency-management", version.ref = "depman" }
+
+[libraries]
+# 테스트 공통
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
+
+# 애너테이션/매핑
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+
+# 선택: 보안/쿼리
+jjwt-api = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { module = "io.jsonwebtoken:jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
+querydsl-jpa = { module = "com.querydsl:querydsl-jpa", version.ref = "querydsl" }
+querydsl-apt = { module = "com.querydsl:querydsl-apt", version.ref = "querydsl" }
+
