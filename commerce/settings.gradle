@@ -1,6 +1,27 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    // 저장소는 settings에서만 관리
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+    }
+}
+
+// ❗ versionCatalogs 블록 '전부' 제거 (자동 로드 사용)
+
 rootProject.name = 'commerce'
-include 'commerce-catalog'
-include 'commerce-commons'
-include 'commerce-order'
-include 'commerce-payment'
-include 'commerce-user'
+include(
+        ':commerce-commons',
+        ':commerce-catalog',
+        ':commerce-order',
+        ':commerce-payment',
+        ':commerce-user'
+)

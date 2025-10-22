@@ -1,38 +1,64 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.5.6'
-    id 'io.spring.dependency-management' version '1.1.7'
+    alias(libs.plugins.spring.boot) apply false
+    alias(libs.plugins.depman)      apply false
 }
+
+// 모듈 역할 명시
+def appModuleNames = ['commerce-catalog', 'commerce-order', 'commerce-payment', 'commerce-user']
+def libModuleNames = ['commerce-commons']
 
 allprojects {
     group = 'com.app'
     version = '0.0.1-SNAPSHOT'
     description = 'commerce'
-
-    repositories {
-        mavenCentral()
-    }
+    // repositories는 settings.gradle에서만 관리
 }
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
 
     java {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(21)
+            languageVersion = JavaLanguageVersion.of(libs.versions.java.get() as String)
         }
     }
 
+    // 전역 규약: 테스트 & 애너테이션 프로세서만
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+        testImplementation platform(libs.junit.bom)
+        testImplementation libs.junit.jupiter
+
+        compileOnly libs.lombok
+        annotationProcessor libs.lombok
+    }
+
+    // lombok annotationProcessor를 compileOnly에 자동 포함(편의)
+    configurations {
+        compileOnly { extendsFrom annotationProcessor }
     }
 
     tasks.named('test') {
         useJUnitPlatform()
+    }
+
+    // === 애플리케이션 모듈 전용 규약 ===
+    if (name in appModuleNames) {
+        apply plugin: libs.plugins.spring.boot.get().pluginId
+        apply plugin: libs.plugins.depman.get().pluginId
+
+        // 공통 실행 스타터(앱만)
+        dependencies {
+            implementation 'org.springframework.boot:spring-boot-starter-actuator'
+            implementation 'org.springframework.boot:spring-boot-starter-validation'
+        }
+
+        // Boot 기본: bootJar=true, jar=false — 기본값 유지
+    }
+
+    // === 라이브러리 모듈 전용 규약 ===
+    if (name in libModuleNames) {
+        apply plugin: 'java-library'
+        // 라이브러리는 JAR만 생성 (bootJar 적용 안 함)
     }
 }
