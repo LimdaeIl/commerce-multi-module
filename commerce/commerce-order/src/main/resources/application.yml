@@ -1,0 +1,6 @@
+server:
+  port: 40001
+
+spring:
+  application:
+    name: order-service
