@@ -1,11 +1,29 @@
 plugins {
     id 'java-library'
+    alias(libs.plugins.depman)
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${libs.versions.spring.boot.get()}"
+    }
 }
 
 dependencies {
-    // 공용 유틸/DTO 등만 — 부트 스타터 금지
-    // 예) api 'org.apache.commons:commons-lang3:3.14.0'
-    // MapStruct 쓰면(commons에 DTO 매핑):
-    // implementation libs.mapstruct
-    // annotationProcessor libs.mapstruct.processor
+    // JPA/Auditing (전이는 막기 위해 implementation 권장)
+    implementation(libs.jakarta.persistence)     // ← api  ➜ implementation
+    implementation(libs.spring.data.commons)     // ← api  ➜ implementation
+    implementation(libs.spring.data.jpa)         // ← api  ➜ implementation
+
+    // BaseEntity QueryDSL 메타모델 생성 + 컴파일을 위해 추가
+    implementation(libs.querydsl.jpa)
+    annotationProcessor("${libs.querydsl.apt.get()}:jakarta")
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+
+    // 기타
+    compileOnly(libs.hibernate.core)
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
+
 }
