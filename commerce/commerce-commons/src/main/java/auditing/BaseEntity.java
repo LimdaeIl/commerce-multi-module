@@ -1,4 +1,4 @@
-package util;
+package auditing;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
