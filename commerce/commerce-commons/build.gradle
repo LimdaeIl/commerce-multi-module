@@ -27,6 +27,6 @@ dependencies {
     annotationProcessor(libs.lombok)
 
     // AutoConfiguration 지원
-    implementation("org.springframework.boot:spring-boot-autoconfigure")
+    implementation(libs.spring.boot.autoconfigure)
 
 }
