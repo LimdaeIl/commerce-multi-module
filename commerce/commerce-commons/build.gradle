@@ -14,6 +14,8 @@ dependencies {
     implementation(libs.jakarta.persistence)     // ← api  ➜ implementation
     implementation(libs.spring.data.commons)     // ← api  ➜ implementation
     implementation(libs.spring.data.jpa)         // ← api  ➜ implementation
+    implementation(libs.hibernate.core)
+
 
     // BaseEntity QueryDSL 메타모델 생성 + 컴파일을 위해 추가
     implementation(libs.querydsl.jpa)
@@ -21,9 +23,10 @@ dependencies {
     annotationProcessor("jakarta.persistence:jakarta.persistence-api")
     annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 
-    // 기타
-    compileOnly(libs.hibernate.core)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
+
+    // AutoConfiguration 지원
+    implementation(libs.spring.boot.autoconfigure)
 
 }

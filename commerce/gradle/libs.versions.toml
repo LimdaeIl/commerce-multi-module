@@ -28,6 +28,9 @@ hibernate-core = { module = "org.hibernate.orm:hibernate-core" }
 # Redis 관련
 redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
 
+# autoConfig
+spring-boot-autoconfigure = { module = "org.springframework.boot:spring-boot-autoconfigure" }
+
 # 애너테이션/매핑
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
