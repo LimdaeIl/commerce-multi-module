@@ -6,6 +6,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -32,6 +33,7 @@ public class Category {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
@@ -41,15 +43,24 @@ public class Category {
     private String path;
 
     private Category(String name, Category parent) {
-        this.name = name;
+        String verifiedName = checkName(name);
+        this.name = verifiedName;
         this.parent = parent;
-        this.path = parent.getPath() + SEPARATOR + name;
+        this.path = parent.getPath() + verifiedName + SEPARATOR;
     }
 
     private Category(String name) {
-        this.name = name;
+        String verifiedName = checkName(name);
+        this.name = verifiedName;
         this.parent = null;
-        this.path = name + SEPARATOR;
+        this.path = verifiedName + SEPARATOR;
+    }
+
+    private String checkName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        return name;
     }
 
     public static Category create(String name, Category parent) {

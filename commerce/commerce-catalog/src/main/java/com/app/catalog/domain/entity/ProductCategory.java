@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -33,7 +32,7 @@ public class ProductCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    void markProduct(Product product) {
+    protected void markProduct(Product product) {
         this.product = product;
     }
 

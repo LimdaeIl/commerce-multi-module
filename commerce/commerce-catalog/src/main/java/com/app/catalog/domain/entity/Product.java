@@ -53,7 +53,7 @@ public class Product {
             String description,
             Integer price,
             Integer stock
-            ) {
+    ) {
         return new Product(name, description, price, stock);
     }
 
