@@ -1,8 +1,7 @@
-package com.app.catalog.domain.repository;
+package com.app.catalog.v1.domain.repository;
 
-import com.app.catalog.domain.entity.Category;
+import com.app.catalog.v1.domain.entity.Category;
 import java.util.List;
-import java.util.Optional;
 
 public interface CategoryRepository {
 
@@ -11,8 +10,6 @@ public interface CategoryRepository {
     List<Category> findByNameIn(List<String> name);
 
     <S extends Category> List<S> saveAll(Iterable<S> entities);
-
-    Optional<Category> findByName(String name);
 
     boolean existsByName(String name);
 

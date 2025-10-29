@@ -1,7 +1,7 @@
-package com.app.catalog.application.category.dto.response;
+package com.app.catalog.v1.application.category.dto.response;
 
 
-import com.app.catalog.domain.entity.Category;
+import com.app.catalog.v1.domain.entity.Category;
 
 public record GetCategoryResponse(
         Long id,

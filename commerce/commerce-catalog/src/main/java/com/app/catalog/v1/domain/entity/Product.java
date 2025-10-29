@@ -1,4 +1,4 @@
-package com.app.catalog.domain.entity;
+package com.app.catalog.v1.domain.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

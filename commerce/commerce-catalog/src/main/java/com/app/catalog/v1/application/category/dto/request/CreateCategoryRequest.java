@@ -1,4 +1,4 @@
-package com.app.catalog.application.category.dto.request;
+package com.app.catalog.v1.application.category.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

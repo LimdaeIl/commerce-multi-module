@@ -1,7 +1,7 @@
-package com.app.catalog.infrastructure.jpa;
+package com.app.catalog.v1.infrastructure.jpa;
 
-import com.app.catalog.domain.entity.Category;
-import com.app.catalog.domain.repository.CategoryRepository;
+import com.app.catalog.v1.domain.entity.Category;
+import com.app.catalog.v1.domain.repository.CategoryRepository;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
