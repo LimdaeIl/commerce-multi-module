@@ -1,11 +1,11 @@
-package com.app.catalog.application.category.service;
+package com.app.catalog.v1.application.category.service;
 
-import com.app.catalog.application.category.dto.request.CreateCategoriesRequest;
-import com.app.catalog.application.category.dto.request.CreateCategoryRequest;
-import com.app.catalog.application.category.dto.response.GetCategoryResponse;
-import com.app.catalog.application.category.usecase.CategoryUseCase;
-import com.app.catalog.domain.entity.Category;
-import com.app.catalog.domain.repository.CategoryRepository;
+import com.app.catalog.v1.application.category.dto.request.CreateCategoriesRequest;
+import com.app.catalog.v1.application.category.dto.request.CreateCategoryRequest;
+import com.app.catalog.v1.application.category.dto.response.GetCategoryResponse;
+import com.app.catalog.v1.application.category.usecase.CategoryUseCase;
+import com.app.catalog.v1.domain.entity.Category;
+import com.app.catalog.v1.domain.repository.CategoryRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

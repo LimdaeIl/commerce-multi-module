@@ -1,4 +1,4 @@
-package com.app.catalog.domain.entity;
+package com.app.catalog.v1.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
