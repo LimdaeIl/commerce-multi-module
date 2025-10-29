@@ -2,5 +2,8 @@ server:
   port: 40000
 
 spring:
+  profiles:
+    active: dev
+
   application:
     name: catalog-service
