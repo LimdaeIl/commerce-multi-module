@@ -25,6 +25,9 @@ spring-data-commons = { module = "org.springframework.data:spring-data-commons" 
 spring-data-jpa = { module = "org.springframework.data:spring-data-jpa" }
 hibernate-core = { module = "org.hibernate.orm:hibernate-core" }
 
+# MySQL
+mysql = { module = "com.mysql:mysql-connector-j" }
+
 # Redis 관련
 redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
 
