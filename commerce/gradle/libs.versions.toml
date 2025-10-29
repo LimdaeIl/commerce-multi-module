@@ -7,8 +7,8 @@ mapstruct = "1.6.2"
 jjwt = "0.12.6"
 querydsl = "5.1.0"
 redisson = "3.52.0"
-
 junit = "5.11.4"
+p6spy-gavlyukovskiy  = "1.9.0"
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
@@ -46,3 +46,5 @@ jjwt-jackson = { module = "io.jsonwebtoken:jjwt-jackson", version.ref = "jjwt" }
 querydsl-jpa = { module = "com.querydsl:querydsl-jpa", version.ref = "querydsl" }
 querydsl-apt = { module = "com.querydsl:querydsl-apt", version.ref = "querydsl" }
 
+# 로그
+p6spy-gavlyukovskiy = { module = "com.github.gavlyukovskiy:p6spy-spring-boot-starter", version.ref = "p6spy-gavlyukovskiy"}
